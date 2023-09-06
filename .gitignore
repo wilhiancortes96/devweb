@@ -1,32 +1,77 @@
-# Prerequisites
-*.d
+#include <iostream>
+#include <string>
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+using namespace std;
 
-# Precompiled Headers
-*.gch
-*.pch
+int main() {
+  // Declaração de variáveis
+  string nome;
+  string cpf;
+  string endereco;
+  int ddd;      // DDD
+  int telefone; // Número de telefone
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+  // Apresentação ao usuário
+  cout << "Bem vindo a inscricao do vestibular da FMP 2024!" << endl;
+  cout << "Favor, preencha os seguintes dados:" << endl;
 
-# Fortran module files
-*.mod
-*.smod
+  // Solicitação dos dados
+  cout << "Digite o nome: ";
+  getline(cin, nome);
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+  cout << "Digite o CPF (11 caracteres): ";
+  getline(cin, cpf);
 
-# Executables
-*.exe
-*.out
-*.app
+  // Verificação do CPF
+  if (cpf.length() !=
+      11) { // cpf.length: serve para retornar o comprimento (número de
+            // caracteres) da string armazenada na variável cpf. A exclamação
+            // "!" é um operador de comparação que significa "não igual a" ao
+            // númeroom o qual o comprimento da string cpf está sendo comparado
+    cout << "Erro: CPF inválido. Por favor, insira um CPF com 11 caracteres."
+         << endl;
+    return 1; // Saia do programa com código de erro 1.
+  } else {
+    cout << "Digite o endereço: ";
+    getline(cin, endereco);
+
+    // Verificação do endereço
+    if (endereco.length() < 5) {
+      cout
+          << "Erro: Endereço muito curto. Por favor, insira um endereço válido."
+          << endl;
+      return 2; // Saia do programa com código de erro 2.
+    } else {
+      cout << "Digite o DDD (2 dígitos): ";
+      cin >> ddd;
+
+      // Verificação do DDD
+      if (ddd < 10 || ddd > 99) {
+        cout << "Erro: DDD inválido. Por favor, insira um DDD com 2 dígitos."
+             << endl;
+        return 3; // Saia do programa com código de erro 3.
+      }
+
+      cout << "Digite o número de telefone (9 dígitos): ";
+      cin >> telefone;
+
+      // Verificação do número de telefone
+      if (telefone < 100000000 || telefone > 999999999) {
+        cout << "Erro: Número de telefone inválido. Por favor, insira um "
+                "telefone com 9 dígitos."
+             << endl;
+        return 4; // Saia do programa com código de erro 4.
+      }
+
+      // Exibição dos dados cadastrados e parabenizo a inscrição:
+      cout << " Parabens voce foi inscrito com sucesso!";
+      cout << "\nDados Cadastrados:" << endl;
+      cout << "Nome: " << nome << endl;
+      cout << "CPF: " << cpf << endl;
+      cout << "Endereço: " << endereco << endl;
+      cout << "Telefone: (" << ddd << ") " << telefone << endl;
+
+      return 0;
+    }
+  }
+}
